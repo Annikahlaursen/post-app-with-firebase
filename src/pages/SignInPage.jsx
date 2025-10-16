@@ -12,12 +12,12 @@ export default function SignInPage() {
     const password = event.target.password.value; // password value from inout field in sign in form
 
     signInWithEmailAndPassword(auth, mail, password)
-      .then(userCredential => {
+      .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user); // for test purposes: logging the authenticated user
       })
-      .catch(error => {
+      .catch((error) => {
         let code = error.code; // saving error code in variable
         code = code.replaceAll("-", " "); // some JS string magic to display error message. See the log above in the console
         code = code.replaceAll("auth/", "");
@@ -29,7 +29,14 @@ export default function SignInPage() {
       <h1>Login</h1>
       <form id="sign-in-form" onSubmit={handleSignIn}>
         <label htmlFor="mail">Mail</label>
-        <input id="mail" type="email" name="mail" aria-label="mail" placeholder="Type your mail..." required />
+        <input
+          id="mail"
+          type="email"
+          name="mail"
+          aria-label="mail"
+          placeholder="Type your mail..."
+          required
+        />
         <label htmlFor="password">Password</label>
         <input
           id="password"
